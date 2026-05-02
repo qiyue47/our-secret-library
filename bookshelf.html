@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>秘密书架</title>
+    <style>
+        body {
+            background-color: #f3e5f5;
+            margin: 0;
+            padding: 20px;
+            font-family: sans-serif;
+            color: #333;
+            text-align: center;
+        }
+        h1 {
+            color: #6a1b9a;
+        }
+        .bookshelf {
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .book-placeholder {
+            width: 120px;
+            height: 180px;
+            border: 2px dashed #b39ddb;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #6a1b9a;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 10px 20px;
+            background-color: #6a1b9a;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        /* Star animation from index */
+        .star-effect {
+            position: absolute;
+            font-size: 24px;
+            color: #FFD700;
+            animation: fadeOutUp 1s forwards;
+            pointer-events: none;
+            user-select: none;
+            z-index: 9999;
+        }
+        @keyframes fadeOutUp {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>我们的书架</h1>
+    <div class="bookshelf">
+        <div class="book-placeholder">第一本书？</div>
+        <div class="book-placeholder">+</div>
+        <div class="book-placeholder">+</div>
+    </div>
+    <a href="index.html" class="back-link">返回</a>
+
+    <script>
+        // Star effect from index
+        document.addEventListener('click', function(e) {
+            let star = document.createElement('div');
+            star.className = 'star-effect';
+            star.textContent = '⭐';
+            star.style.left = e.clientX - 12 + 'px';
+            star.style.top = e.clientY - 12 + 'px';
+            document.body.appendChild(star);
+            setTimeout(() => {
+                star.remove();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
